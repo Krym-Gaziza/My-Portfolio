@@ -8,10 +8,16 @@ import githubLight from '../../assets/github-light.svg';
 import githubDark from '../../assets/github-dark.svg';
 import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
-import CV from '../../assets/cv.pdf';
+import CV from '../../assets/gaziza.pdf';
 import { useTheme } from '../../common/ThemeContext';
+import RenderPropsComponent from '../../common/RenderPropsComponent';
+import React, { useEffect } from 'react';
+import { measurePageLoadTime } from '../../common/performanceUtils';
 
 function Hero() {
+  useEffect(() => {
+    measurePageLoadTime();
+  }, []);
   const { theme, toggleTheme } = useTheme();
 
   const themeIcon = theme === 'light' ? sun : moon;
@@ -25,7 +31,7 @@ function Hero() {
         <img
           src={heroImg}
           className={styles.hero}
-          alt="Profile picture of Harris Johnsen"
+          alt="Profile picture of Krym Gaziza"
         />
         <img
           className={styles.colorMode}
@@ -34,31 +40,36 @@ function Hero() {
           onClick={toggleTheme}
         />
       </div>
+      
       <div className={styles.info}>
+      <br></br><br></br>
         <h1>
-          Harris
-          <br />
-          Johnsen
+          KRYM GAZIZA
         </h1>
-        <h2>Frontend Developer</h2>
+        <br></br>
+        <h2>'Frontend Developer'</h2>
+        <h2>'3D artist'</h2>
+        <h2>'UI/UX designer'</h2>
+
         <span>
-          <a href="https://twitter.com/" target="_blank">
+          <a href="https://www.figma.com/files/drafts?fuid=1282889181787175610" target="_blank">
             <img src={twitterIcon} alt="Twitter icon" />
           </a>
-          <a href="https://github.com/" target="_blank">
+          <a href="https://github.com/Krym-Gaziza/" target="_blank">
             <img src={githubIcon} alt="Github icon" />
           </a>
-          <a href="https://linkedin.com/" target="_blank">
+          <a href="https://www.linkedin.com/in/gaziza-krym-09a034257/" target="_blank">
             <img src={linkedinIcon} alt="Linkedin icon" />
           </a>
         </span>
         <p className={styles.description}>
-          With a passion for developing modern React web apps for commercial
-          businesses.
+        I create modern web applications for various 
+        companies and projects
         </p>
         <a href={CV} download>
           <button className="hover">Resume</button>
         </a>
+        <RenderPropsComponent render={() => <span></span>} />
       </div>
     </section>
   );
